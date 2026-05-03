@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CST Monitoring System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar glass">
+      <div class="logo-wrap"><div class="drop"></div><div><h1>CST MONITORING SYSTEM</h1><p>Continuous Settling Tank</p></div></div>
+      <nav>
+        <a class="active">Dashboard</a><a>Realtime Data</a><a>Trends</a><a>Alarms</a><a>History</a><a>Reports</a><a>Settings</a><a>About</a>
+      </nav>
+      <div class="auth glass-sm">User: <b>esp32user</b><br>Password: <b>Esp32user123</b></div>
+    </aside>
+
+    <main class="content">
+      <header class="top glass">
+        <h2>CST Monitoring System</h2>
+        <div class="status"><span class="dot"></span>MQTT Connected</div>
+        <div id="clock"></div>
+        <div class="live">● Live</div>
+      </header>
+
+      <section class="grid">
+        <div class="card glass temp">
+          <h3>Temperature Monitoring</h3>
+          <div class="temp-row">
+            <div><p>Sensor 1 (Top)</p><h4>87.8 °C</h4><div class="bar heat"></div></div>
+            <div><p>Sensor 2 (Bottom)</p><h4>92.1 °C</h4><div class="bar heat"></div></div>
+          </div>
+        </div>
+
+        <div class="card glass tank">
+          <h3>CST Level Gauge</h3>
+          <div class="tank-wrap">
+            <div class="cyl">
+              <div class="layer sludge" style="height:17%"></div>
+              <div class="layer water" style="height:46%"></div>
+              <div class="layer cpo" style="height:37%"></div>
+            </div>
+            <ul>
+              <li><span class="cpo-t">CPO</span> 32.6 cm (36.2%)</li>
+              <li><span class="water-t">Water</span> 41.8 cm (46.4%)</li>
+              <li><span class="sludge-t">Sludge</span> 15.6 cm (17.4%)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card glass alarms">
+          <h3>Process Alarms</h3>
+          <div class="alarm red">Temperature high</div>
+          <div class="alarm orange">Pressure abnormal</div>
+          <div class="alarm yellow">Oil level warning</div>
+        </div>
+
+        <div class="card glass pressure">
+          <h3>Pressure</h3>
+          <div class="p-item"><span>CPO 1.23 bar</span><div class="progress"><i style="width:62%"></i></div></div>
+          <div class="p-item"><span>Water 1.87 bar</span><div class="progress"><i style="width:82%"></i></div></div>
+          <div class="p-item"><span>Atmospheric 1.01 bar</span><div class="progress"><i style="width:50%"></i></div></div>
+        </div>
+
+        <div class="card glass kpi">
+          <h3>KPI Summary</h3>
+          <div class="kpi-grid">
+            <div>Volume<br><b>78.15 L</b></div><div>Mass<br><b>73.42 kg</b></div><div>Weight<br><b>719.85 N</b></div>
+            <div>Volume CPO<br><b>28.46 L</b></div><div>Volume Water<br><b>36.46 L</b></div><div>Volume Sludge<br><b>13.23 L</b></div>
+          </div>
+        </div>
+
+        <div class="card glass charts">
+          <h3>Distribution & Trends</h3>
+          <div class="chart-row">
+            <div class="donut"></div>
+            <div class="linechart"></div>
+          </div>
+        </div>
+
+        <div class="card glass table">
+          <h3>Recent Data</h3>
+          <table>
+            <tr><th>Time</th><th>CPO</th><th>Water</th><th>Sludge</th><th>Total</th><th>T1</th><th>T2</th></tr>
+            <tr><td>10:24:30</td><td>32.6</td><td>41.8</td><td>15.6</td><td>89.0</td><td>87.4</td><td>91.2</td></tr>
+            <tr><td>10:19:30</td><td>32.4</td><td>42.0</td><td>15.6</td><td>88.9</td><td>86.9</td><td>90.8</td></tr>
+            <tr><td>10:14:30</td><td>32.5</td><td>41.7</td><td>15.4</td><td>88.6</td><td>87.2</td><td>91.0</td></tr>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+<script>
+setInterval(()=>document.getElementById('clock').textContent=new Date().toLocaleTimeString(),1000);
+</script>
+</body>
+</html>
